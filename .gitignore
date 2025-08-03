@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+ollama/models/
+
+# Environnement
+.env
+.env.local
+
+# Builds
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Système
+.DS_Store
+*.log
+
+# Données sensibles
+data/db/  # Exclut la base MongoDB locale
