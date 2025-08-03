@@ -1,0 +1,14 @@
+import express from 'express';
+import fileUpload from 'express-fileupload';
+import path from 'path';
+import docRoutes from './routes/doc.routes';
+
+const app = express();
+
+app.use(express.json());
+app.use(fileUpload());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/api/docs', docRoutes);
+
+export default app;

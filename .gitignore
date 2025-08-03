@@ -1,22 +1,30 @@
-# Dependencies
+# 📦 Dépendances
 node_modules/
 ollama/models/
 
-# Environnement
+# ⚙️ Fichiers d'environnement
 .env
 .env.local
+.env.*        # Tous les fichiers .env sauf un exemple
+!.env.example # Garde un modèle si tu veux
 
-# Builds
+# 🏗️ Dossiers de build
 dist/
 build/
 
-# IDE
+# 💻 Fichiers d’IDE
 .idea/
 .vscode/
 
-# Système
+# 🧹 Fichiers système
 .DS_Store
 *.log
 
-# Données sensibles
-data/db/  # Exclut la base MongoDB locale
+# 🔐 Données sensibles
+data/db/            # Exclut une base MongoDB locale
+server/uploads/     # Exclut les fichiers uploadés localement
+
+# 🛑 Logs spécifiques Node.js/Yarn/NPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
