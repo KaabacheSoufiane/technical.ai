@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  technical-ai:
+    build: .
+    ports:
+      - "80:5000"
+      - "443:5443"
+    environment:
+      - NODE_ENV=production
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - PORT=5000
+      - HTTPS_PORT=5443
+    volumes:
+      - ./ssl:/app/ssl:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://localhost:5443/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
