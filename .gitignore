@@ -1,51 +1,35 @@
-# Dependencies
+# Dépendances
 node_modules/
+*/node_modules/
+
+# Builds
+build/
+dist/
+*.tgz
+
+# Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Production builds
-/build
-/dist
-*.tgz
-*.tar.gz
-
-# Environment variables
+# Environnement
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# SSL certificates (sensibles)
+# SSL (CRITIQUE - Ne jamais commiter)
 ssl/
 *.pem
 *.key
 *.crt
 *.p12
-*.pfx
 
-# Logs de développement
-*.log
-server.log
-
-# Variables d'environnement
-.env
-.env.*
-!.env.example
-
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
+# Cache
+.cache/
+.parcel-cache/
 
 # IDE
 .vscode/
@@ -57,6 +41,11 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Temporary files
+# Tests
+coverage/
+.nyc_output/
+
+# Temporaires
 tmp/
 temp/
+*.tmp

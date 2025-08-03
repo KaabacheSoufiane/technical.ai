@@ -10,13 +10,6 @@ declare global {
 const TechnicalAI: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const quickQuestions = [
-    "Pourquoi mon ballon d'eau chaude ne chauffe plus ?",
-    "Chaudière qui ne démarre pas, que vérifier ?",
-    "Pression trop basse sur circuit chauffage",
-    "Code erreur E10 sur chaudière"
-  ];
-
   const askAI = async (question: string) => {
     if (isLoading) return;
     
@@ -24,32 +17,22 @@ const TechnicalAI: React.FC = () => {
     const startTime = Date.now();
 
     try {
-      // Affichage optimisé avec métriques
       window.Swal.fire({
-        title: '🤖 Assistant IA',
+        title: 'Analyse en cours...',
         html: `
-          <div class="question-display">
-            <p><strong>Question:</strong></p>
-            <p class="question-text">${question}</p>
-          </div>
-          <div class="loading-spinner">
-            <i class="fas fa-brain fa-pulse"></i>
-            <p>Analyse IA en cours...</p>
-            <small>Modèle: Mistral 7B</small>
+          <div class="loading-container">
+            <div class="pulse-loader"></div>
+            <p class="loading-text">${question}</p>
           </div>
         `,
         showConfirmButton: false,
         allowOutsideClick: false,
-        customClass: {
-          popup: 'ai-popup'
-        }
+        customClass: { popup: 'modern-popup' }
       });
 
       const response = await fetch('https://localhost:5443/api/ai/ask', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question }),
       });
 
@@ -58,33 +41,23 @@ const TechnicalAI: React.FC = () => {
       if (response.ok) {
         const processingTime = Date.now() - startTime;
         
-        // Affichage optimisé avec métriques
         window.Swal.fire({
-          title: '✅ Diagnostic IA',
           html: `
-            <div class="response-display">
-              <div class="question-recap">
-                <p><strong>Question:</strong></p>
-                <p class="question-text">${question}</p>
+            <div class="response-container">
+              <div class="response-header">
+                <h3>Diagnostic technique</h3>
+                <span class="processing-time">${data.processing_time || processingTime}ms</span>
               </div>
-              <div class="answer-section">
-                <p><strong>Réponse technique:</strong></p>
-                <div class="answer-text">${data.answer}</div>
-              </div>
-              <div class="metrics">
-                <small>🕰️ Temps de traitement: ${data.processing_time || processingTime}ms | 🤖 ${data.model || 'Mistral 7B'}</small>
+              <div class="response-content">
+                ${data.answer}
               </div>
             </div>
           `,
           confirmButtonText: 'Nouvelle question',
-          cancelButtonText: 'Fermer',
           showCancelButton: true,
-          confirmButtonColor: '#3498db',
-          cancelButtonColor: '#95a5a6',
-          customClass: {
-            popup: 'ai-response-popup'
-          }
-        }).then((result) => {
+          cancelButtonText: 'Fermer',
+          customClass: { popup: 'response-popup' }
+        }).then((result: any) => {
           if (result.isConfirmed) {
             showQuestionInput();
           }
@@ -92,12 +65,20 @@ const TechnicalAI: React.FC = () => {
       } else {
         throw new Error(data.error || 'Erreur inconnue');
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Erreur API:', error);
+      
+      let errorMessage = 'Service temporairement indisponible';
+      if (error.name === 'TypeError') {
+        errorMessage = 'Problème de connexion au serveur';
+      } else if (error.status === 429) {
+        errorMessage = 'Trop de requêtes, veuillez patienter';
+      }
+      
       window.Swal.fire({
-        title: '❌ Erreur',
-        text: 'Impossible de contacter l\'IA. Vérifiez que le serveur est démarré.',
-        icon: 'error',
-        confirmButtonColor: '#e74c3c'
+        title: 'Erreur',
+        text: errorMessage,
+        icon: 'error'
       });
     } finally {
       setIsLoading(false);
@@ -106,136 +87,134 @@ const TechnicalAI: React.FC = () => {
 
   const showQuestionInput = () => {
     window.Swal.fire({
-      title: '🔧 Technical.AI',
       html: `
-        <div class="input-section">
-          <p>Posez votre question technique :</p>
+        <div class="input-container">
+          <h3>Posez votre question technique</h3>
           <textarea 
             id="question-input" 
-            placeholder="Ex: Pourquoi mon ballon d'eau chaude ne chauffe plus ?"
+            placeholder="Décrivez votre problème technique..."
             maxlength="500"
-            rows="4"
           ></textarea>
-          <div class="char-counter">
-            <span id="char-count">0</span>/500 caractères
-          </div>
         </div>
       `,
-      showCancelButton: true,
       confirmButtonText: 'Analyser',
+      showCancelButton: true,
       cancelButtonText: 'Annuler',
-      confirmButtonColor: '#3498db',
-      cancelButtonColor: '#95a5a6',
-      customClass: {
-        popup: 'question-input-popup'
-      },
-      didOpen: () => {
-        const textarea = document.getElementById('question-input') as HTMLTextAreaElement;
-        const charCount = document.getElementById('char-count');
-        
-        textarea.addEventListener('input', () => {
-          if (charCount) {
-            charCount.textContent = textarea.value.length.toString();
-          }
-        });
-        
-        textarea.focus();
-      },
+      customClass: { popup: 'input-popup' },
       preConfirm: () => {
         const textarea = document.getElementById('question-input') as HTMLTextAreaElement;
         const question = textarea.value.trim();
         
-        if (!question) {
-          window.Swal.showValidationMessage('Veuillez saisir une question');
-          return false;
-        }
-        
-        if (question.length < 3) {
-          window.Swal.showValidationMessage('Question trop courte (minimum 3 caractères)');
+        if (!question || question.length < 3) {
+          window.Swal.showValidationMessage('Question trop courte');
           return false;
         }
         
         return question;
       }
-    }).then((result) => {
+    }).then((result: any) => {
       if (result.isConfirmed && result.value) {
         askAI(result.value);
       }
     });
   };
 
-  const handleQuickQuestion = (question: string) => {
-    askAI(question);
-  };
+  // Questions prédéfinies pour éviter les re-rendus
+  const quickQuestions = React.useMemo(() => [
+    "Ballon d'eau chaude ne chauffe plus",
+    "Chaudière ne démarre pas", 
+    "Pression circuit trop basse",
+    "Code erreur chaudière"
+  ], []);
 
   return (
-    <div className="technical-ai">
-      <header className="ai-header">
-        <div className="header-content">
-          <h1>🔧 Technical.AI</h1>
-          <p className="subtitle">Assistant IA spécialisé pour techniciens de maintenance</p>
-          <div className="specialties">
-            <span className="specialty">🔥 Chauffage</span>
-            <span className="specialty">🚿 ECS</span>
-            <span className="specialty">⚡ Diagnostic</span>
+    <div className="app">
+      <div className="hero-section">
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span>🔧 Technical AI</span>
+          </div>
+          
+          <h1 className="hero-title">
+            Assistant IA pour
+            <span className="gradient-text"> techniciens</span>
+          </h1>
+          
+          <p className="hero-subtitle">
+            Diagnostic intelligent pour chauffage et ECS.
+            Obtenez des solutions techniques précises en quelques secondes.
+          </p>
+
+          <div className="cta-section">
+            <button 
+              className="primary-button"
+              onClick={showQuestionInput}
+              disabled={isLoading}
+            >
+              <span>Poser une question</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </button>
           </div>
         </div>
-      </header>
 
-      <main className="main-content">
-        <div className="action-section">
-          <button 
-            className="ask-button"
-            onClick={showQuestionInput}
-            disabled={isLoading}
-          >
-            <i className="fas fa-comments"></i>
-            Poser une question
-          </button>
+        <div className="hero-visual">
+          <div className="floating-card">
+            <div className="card-header">
+              <div className="status-dot"></div>
+              <span>IA Active</span>
+            </div>
+            <div className="card-content">
+              <div className="metric">
+                <span className="metric-value">7B</span>
+                <span className="metric-label">Paramètres</span>
+              </div>
+              <div className="metric">
+                <span className="metric-value">&lt;2s</span>
+                <span className="metric-label">Réponse</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <section className="quick-questions">
-          <h2>⚡ Questions rapides</h2>
-          <div className="questions-grid">
-            {quickQuestions.map((question, index) => (
-              <button
-                key={index}
-                className="quick-question-btn"
-                onClick={() => handleQuickQuestion(question)}
-                disabled={isLoading}
-              >
-                <i className="fas fa-question-circle"></i>
-                {question}
-              </button>
-            ))}
+      <div className="quick-section">
+        <h2>Questions fréquentes</h2>
+        <div className="quick-grid">
+          {quickQuestions.map((question, index) => (
+            <button
+              key={index}
+              className="quick-card"
+              onClick={() => askAI(question)}
+              disabled={isLoading}
+            >
+              <div className="quick-icon">⚡</div>
+              <span>{question}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="features-section">
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🤖</div>
+            <h3>IA Spécialisée</h3>
+            <p>Modèle Mistral 7B entraîné pour le diagnostic technique</p>
           </div>
-        </section>
-
-        <section className="features">
-          <h2>🚀 Fonctionnalités</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <i className="fas fa-robot"></i>
-              <h3>IA Spécialisée</h3>
-              <p>Diagnostic précis basé sur l'expertise technique</p>
-            </div>
-            <div className="feature-card">
-              <i className="fas fa-bolt"></i>
-              <h3>Réponses Rapides</h3>
-              <p>Solutions immédiates pour vos interventions</p>
-            </div>
-            <div className="feature-card">
-              <i className="fas fa-search"></i>
-              <h3>Diagnostic Avancé</h3>
-              <p>Identification des pannes avec recommandations</p>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚡</div>
+            <h3>Réponses Rapides</h3>
+            <p>Diagnostic en moins de 2 secondes</p>
           </div>
-        </section>
-      </main>
-
-      <footer className="ai-footer">
-        <p>© 2024 Technical.AI - Développé avec ❤️ pour les techniciens</p>
-      </footer>
+          <div className="feature-card">
+            <div className="feature-icon">🔧</div>
+            <h3>Solutions Pratiques</h3>
+            <p>Recommandations concrètes et actionables</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
