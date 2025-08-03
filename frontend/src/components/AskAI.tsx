@@ -6,10 +6,18 @@ const AskAI = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const sanitizeInput = (input: string): string => {
+    return input
+      .replace(/[<>"'&]/g, '') // Supprime caractères dangereux
+      .trim();
+  };
+
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (question.trim().length < 3) {
+    const sanitizedQuestion = sanitizeInput(question);
+    
+    if (sanitizedQuestion.length < 3) {
       setError('Question trop courte (minimum 3 caractères)');
       return;
     }
@@ -25,7 +33,7 @@ const AskAI = () => {
       const res = await fetch('https://localhost:5443/api/ai/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: question.trim() }),
+        body: JSON.stringify({ question: sanitizedQuestion }),
         signal: controller.signal
       });
 

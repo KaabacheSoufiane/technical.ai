@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { uploadDoc, listDocs } from '../controllers/doc.controller';
+import { uploadDoc, listDocs } from '../controlloers/doc.controller';
 
 const router = Router();
 

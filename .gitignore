@@ -17,11 +17,22 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# SSL certificates
+# SSL certificates (sensibles)
 ssl/
 *.pem
 *.key
 *.crt
+*.p12
+*.pfx
+
+# Logs de développement
+*.log
+server.log
+
+# Variables d'environnement
+.env
+.env.*
+!.env.example
 
 # Logs
 logs

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import aiRoutes from './routes/ai.routes';
 import docRoutes from './routes/doc.routes';
+import publicRoutes from './routes/public.routes';
 
 const app = express();
 
@@ -23,19 +24,31 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '1mb' }));
 
+// Protection CSRF simple (dev)
+app.use((req, res, next) => {
+  if (req.method === 'POST' && process.env.NODE_ENV === 'production') {
+    const origin = req.get('Origin');
+    const allowedOrigins = ['https://localhost:3000', 'https://technical-ai.com'];
+    if (!origin || !allowedOrigins.includes(origin)) {
+      return res.status(403).json({ error: 'Origine non autorisée' });
+    }
+  }
+  next();
+});
+
 // Rate limiting simple
 const requestCounts = new Map();
 app.use('/api/ai', (req, res, next) => {
-  const ip = req.ip || req.connection.remoteAddress;
+  const ip = req.ip || req.connection.remoteAddress || 'unknown';
   const now = Date.now();
-  const windowMs = 60000; // 1 minute
+  const windowMs = 60000;
   const maxRequests = 10;
   
   if (!requestCounts.has(ip)) {
     requestCounts.set(ip, []);
   }
   
-  const requests = requestCounts.get(ip).filter((time: number) => now - time < windowMs);
+  const requests = requestCounts.get(ip)!.filter((time: number) => now - time < windowMs);
   
   if (requests.length >= maxRequests) {
     return res.status(429).json({ error: 'Trop de requêtes. Attendez 1 minute.' });
@@ -43,15 +56,13 @@ app.use('/api/ai', (req, res, next) => {
   
   requests.push(now);
   requestCounts.set(ip, requests);
-  next();
+  return next();
 });
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
+// Routes publiques
+app.use(publicRoutes);
 
-// Routes
+// Routes API protégées
 app.use('/api/ai', aiRoutes);
 app.use('/api/docs', docRoutes);
 

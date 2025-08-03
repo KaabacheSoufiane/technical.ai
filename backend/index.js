@@ -24,12 +24,24 @@ app.use((req, res, next) => {
   }
 });
 
+// Route publique sécurisée (pas d'infos sensibles)
 app.get('/', (req, res) => {
-  res.send('Hello from Backend!');
+  res.json({ 
+    name: 'Technical AI Backend',
+    version: '1.0.0',
+    status: 'running'
+  });
 });
 
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Route protégée exemple (à supprimer en production)
 app.get('/api/message', (req, res) => {
-  res.json({ message: 'Ceci est un message de votre API Backend!' });
+  // TODO: Ajouter authentification en production
+  res.json({ message: 'API Backend Technical AI' });
 });
 
 // Configuration HTTPS
