@@ -8,11 +8,12 @@ const app = express();
 
 // Middleware de redirection HTTPS
 app.use((req, res, next) => {
-  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
-    res.redirect(`https://${req.header('host')}${req.url}`);
-  } else {
-    next();
+  // Force HTTPS en production et optionnel en dev
+  if (req.header('x-forwarded-proto') !== 'https' && 
+      (process.env.NODE_ENV === 'production' || process.env.FORCE_HTTPS === 'true')) {
+    return res.redirect(301, `https://${req.header('host')}${req.url}`);
   }
+  next();
 });
 
 // Middlewares

@@ -1,97 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>Vous devez activer JavaScript pour exécuter cette application.</noscript>
-
-    <!--
-      Optionnel : Un indicateur de chargement simple qui peut être affiché avant que votre application React ne monte.
-      Vous pouvez le styliser en CSS (par exemple, dans public/index.css ou un style interne)
-      et le cacher avec JavaScript ou une fois que votre composant racine React est rendu.
-    -->
-    <div id="initial-loading-message" style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh; /* Prend au moins toute la hauteur de la vue */
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Une police plus agréable */
-        font-size: 1.5em;
-        color: #555;
-        background-color: #f0f2f5; /* Un léger fond */
-        text-align: center;
-        padding: 20px;
-        box-sizing: border-box;
-    ">
-      <p>Chargement de l'application... <br/> Veuillez patienter.</p>
-      <!-- Vous pourriez ajouter ici une icône de chargement SVG ou un GIF animé -->
-    </div>
-
-    <!--
-      C'est le point d'ancrage principal où votre application React sera montée.
-      Tout le contenu dynamique de votre application sera inséré à l'intérieur de ce div.
-    -->
-    <div id="root"></div>
-
-    <!--
-      Scripts externes et SDK tiers :
-      Placez ici les scripts qui doivent être chargés globalement et qui ne sont pas gérés
-      directement par le processus de build de votre application React (ex: Google Analytics,
-      services de chat, outils de surveillance des erreurs, etc.).
-      Ces scripts sont généralement placés juste avant la fermeture de la balise </body>
-      pour ne pas bloquer le rendu initial de la page.
-    -->
-    <!-- Exemple pour Google Analytics (remplacez 'YOUR_GA_TRACKING_ID' par votre ID réel) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'YOUR_GA_TRACKING_ID');
-    </script>
-    -->
-
-    <!-- Exemple pour un service de chat en direct (si vous en utilisez un) -->
-    <!--
-    <script src="https://cdn.example.com/chat-widget.js"></script>
-    -->
-
-    <!--
-      Les commentaires originaux de create-react-app.
-      Ce fichier HTML est un modèle.
-      Si vous l'ouvrez directement dans le navigateur, vous verrez une page vide.
-
-      Vous pouvez ajouter des polices web, des balises meta ou des analyses à ce fichier.
-      L'étape de build placera les scripts groupés dans la balise <body>.
-
-      Pour commencer le développement, exécutez `npm start` ou `yarn start`.
-      Pour créer un bundle de production, utilisez `npm run build` ou `yarn build`.
-    -->
-  </body>
-
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Assistant IA pour techniciens de maintenance" />
+  <title>Technical.AI</title>
+  
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
+  <div id="root"></div>
+</body>
 </html>

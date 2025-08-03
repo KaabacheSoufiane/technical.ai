@@ -3,26 +3,25 @@
   "version": "1.0.0",
   "description": "Assistant IA pour techniciens de maintenance",
   "scripts": {
-    "dev:backend": "cd backend && node index.js",
-    "dev:server": "cd server && npx ts-node --transpile-only server.ts",
-    "dev:frontend": "cd frontend && HTTPS=true npm start",
-    "dev:all": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:frontend\"",
-    "build:server": "cd server && npx tsc",
-    "start:prod": "cd server && node dist/server.js",
-    "install:all": "npm ci && cd backend && npm ci && cd ../frontend && npm ci && cd ../server && npm ci",
-    "setup:ssl": "mkdir -p ssl && openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 365 -nodes -subj '/C=FR/ST=France/L=Paris/O=TechnicalAI/OU=Dev/CN=localhost'",
-    "test:api": "curl -k -s https://localhost:5443/health | jq .",
-    "clean": "rm -rf server/dist frontend/build node_modules/*/node_modules"
+    "start": "./start.sh",
+    "test": "./test.sh",
+    "server": "node server.js",
+    "frontend": "cd frontend && HTTPS=true npm start",
+    "install:all": "npm ci && cd frontend && npm ci",
+    "clean": "rm -rf frontend/build ssl node_modules frontend/node_modules",
+    "setup:ssl": "mkdir -p ssl && openssl req -x509 -newkey rsa:2048 -keyout ssl/key.pem -out ssl/cert.pem -days 365 -nodes -subj '/CN=localhost'"
   },
   "dependencies": {
     "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
+    "concurrently": "^8.2.0",
     "ts-node": "^10.9.0",
-    "typescript": "^5.0.0",
-    "concurrently": "^8.2.0"
+    "typescript": "^5.0.0"
   }
 }
