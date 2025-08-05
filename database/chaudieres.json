@@ -1,0 +1,74 @@
+{
+  "chaudieres_gaz": {
+    "condensation": {
+      "Viessmann": {
+        "gammes": ["Vitodens", "Vitocrossal"],
+        "modeles": [
+          {
+            "nom": "Vitodens 200-W",
+            "puissance": "19-35 kW",
+            "rendement": "98%",
+            "type": "murale",
+            "codes_erreur": ["F2", "F4", "F5", "F61", "F62"],
+            "pannes_courantes": ["Sonde température", "Circulateur", "Vanne 3 voies"]
+          },
+          {
+            "nom": "Vitodens 100-W",
+            "puissance": "26-35 kW", 
+            "rendement": "94%",
+            "type": "murale",
+            "codes_erreur": ["F2", "F4", "F28", "F29"]
+          }
+        ]
+      },
+      "Bosch": {
+        "gammes": ["Condens", "Greenstar"],
+        "modeles": [
+          {
+            "nom": "Condens 7000 W",
+            "puissance": "20-30 kW",
+            "rendement": "94%",
+            "type": "murale",
+            "codes_erreur": ["E9", "EA", "C6", "C7"]
+          }
+        ]
+      },
+      "Saunier Duval": {
+        "gammes": ["ThemaPlus", "Isotwin"],
+        "modeles": [
+          {
+            "nom": "ThemaPlus Condens",
+            "puissance": "25-30 kW",
+            "rendement": "94%",
+            "type": "murale",
+            "codes_erreur": ["F1", "F5", "F13", "F28", "F29"]
+          }
+        ]
+      },
+      "De Dietrich": {
+        "gammes": ["Naneo", "Innovens"],
+        "modeles": [
+          {
+            "nom": "Naneo PMC-M",
+            "puissance": "24-28 kW",
+            "rendement": "94%",
+            "type": "murale",
+            "codes_erreur": ["A01", "A02", "A03", "A07"]
+          }
+        ]
+      },
+      "Frisquet": {
+        "gammes": ["Hydromotrix", "Prestige"],
+        "modeles": [
+          {
+            "nom": "Hydromotrix Condensation",
+            "puissance": "25-32 kW",
+            "rendement": "94%",
+            "type": "murale",
+            "codes_erreur": ["D01", "D02", "D03", "D04"]
+          }
+        ]
+      }
+    }
+  }
+}

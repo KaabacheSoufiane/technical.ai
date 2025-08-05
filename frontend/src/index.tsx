@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Service Worker désactivé pour éviter les erreurs
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('/serviceWorker.js')
+//   });
+// }
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

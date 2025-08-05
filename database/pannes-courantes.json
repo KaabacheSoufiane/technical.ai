@@ -1,0 +1,127 @@
+{
+  "pannes_chaudieres": {
+    "symptomes": {
+      "pas_de_chauffage": {
+        "causes_probables": [
+          "Circulateur HS",
+          "Vanne 3 voies bloquée",
+          "Sonde température défaillante",
+          "Pression circuit insuffisante",
+          "Thermostat ambiance"
+        ],
+        "diagnostics": [
+          "Vérifier pression circuit (1-2 bars)",
+          "Tester circulateur (bruit, rotation)",
+          "Contrôler vanne 3 voies",
+          "Mesurer sondes température"
+        ]
+      },
+      "pas_eau_chaude": {
+        "causes_probables": [
+          "Vanne 3 voies bloquée sur chauffage",
+          "Sonde ECS défaillante",
+          "Échangeur ECS entartré",
+          "Débit eau insuffisant"
+        ],
+        "diagnostics": [
+          "Tester vanne 3 voies",
+          "Contrôler sonde ECS",
+          "Vérifier débit eau chaude",
+          "Détartrer échangeur si nécessaire"
+        ]
+      },
+      "bruit_anormal": {
+        "causes_probables": [
+          "Circulateur usé",
+          "Air dans circuit",
+          "Entartrage échangeur",
+          "Pression incorrecte"
+        ],
+        "diagnostics": [
+          "Purger circuit chauffage",
+          "Contrôler pression",
+          "Écouter circulateur",
+          "Vérifier température retour"
+        ]
+      }
+    }
+  },
+  "pannes_ballons_ecs": {
+    "symptomes": {
+      "pas_eau_chaude": {
+        "causes_probables": [
+          "Résistance électrique HS",
+          "Thermostat sécurité déclenché",
+          "Contacteur jour/nuit défaillant",
+          "Sonde température"
+        ],
+        "diagnostics": [
+          "Tester résistance (continuité)",
+          "Réarmer thermostat sécurité",
+          "Contrôler contacteur HC/HP",
+          "Mesurer tension alimentation"
+        ]
+      },
+      "eau_tiede": {
+        "causes_probables": [
+          "Résistance partiellement HS",
+          "Thermostat déréglé",
+          "Stratification perturbée",
+          "Mélangeur thermostatique"
+        ],
+        "diagnostics": [
+          "Mesurer résistance électrique",
+          "Régler thermostat",
+          "Vérifier isolation ballon",
+          "Contrôler mélangeur"
+        ]
+      },
+      "fuite_eau": {
+        "causes_probables": [
+          "Corrosion cuve",
+          "Joint bride résistance",
+          "Groupe sécurité",
+          "Raccordements"
+        ],
+        "diagnostics": [
+          "Localiser fuite précisément",
+          "Contrôler groupe sécurité",
+          "Vérifier joints",
+          "Tester pression circuit"
+        ]
+      }
+    }
+  },
+  "pannes_pac": {
+    "symptomes": {
+      "pac_ne_demarre_pas": {
+        "causes_probables": [
+          "Alimentation électrique",
+          "Disjoncteur déclenché",
+          "Thermostat ambiance",
+          "Pressostat sécurité"
+        ],
+        "diagnostics": [
+          "Vérifier tension alimentation",
+          "Contrôler disjoncteurs",
+          "Tester thermostat",
+          "Réarmer pressostats"
+        ]
+      },
+      "givrage_excessif": {
+        "causes_probables": [
+          "Dégivrage défaillant",
+          "Manque fluide frigorigène",
+          "Ventilateur extérieur",
+          "Sonde température"
+        ],
+        "diagnostics": [
+          "Contrôler cycle dégivrage",
+          "Vérifier pressions fluide",
+          "Tester ventilateur",
+          "Mesurer sondes"
+        ]
+      }
+    }
+  }
+}

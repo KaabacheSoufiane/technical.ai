@@ -1,0 +1,79 @@
+{
+  "pompes_chaleur_air_eau": {
+    "Daikin": {
+      "gammes": ["Altherma", "Emura"],
+      "modeles": [
+        {
+          "nom": "Altherma 3 H HT",
+          "puissance": "4-16 kW",
+          "cop": "4.6",
+          "temperature_max": "70°C",
+          "codes_erreur": ["E1", "E3", "E7", "F3", "H0"]
+        },
+        {
+          "nom": "Altherma 3 R ECH2O",
+          "puissance": "4-8 kW",
+          "cop": "4.3",
+          "ecs_integree": true
+        }
+      ]
+    },
+    "Mitsubishi": {
+      "gammes": ["Ecodan", "Zubadan"],
+      "modeles": [
+        {
+          "nom": "Ecodan PUHZ-SHW",
+          "puissance": "5-14 kW",
+          "cop": "4.2",
+          "temperature_min": "-20°C"
+        }
+      ]
+    },
+    "Atlantic": {
+      "gammes": ["Alfea", "Loria"],
+      "modeles": [
+        {
+          "nom": "Alfea Extensa Duo",
+          "puissance": "6-16 kW",
+          "cop": "4.1",
+          "ecs_integree": true
+        }
+      ]
+    },
+    "Viessmann": {
+      "gammes": ["Vitocal"],
+      "modeles": [
+        {
+          "nom": "Vitocal 200-S",
+          "puissance": "4-15 kW",
+          "cop": "4.4",
+          "temperature_max": "65°C"
+        }
+      ]
+    }
+  },
+  "pompes_chaleur_geothermiques": {
+    "Viessmann": {
+      "gammes": ["Vitocal"],
+      "modeles": [
+        {
+          "nom": "Vitocal 300-G",
+          "puissance": "5-45 kW",
+          "cop": "5.1",
+          "type": "sol-eau"
+        }
+      ]
+    },
+    "Daikin": {
+      "gammes": ["Altherma"],
+      "modeles": [
+        {
+          "nom": "Altherma Geothermie",
+          "puissance": "6-16 kW",
+          "cop": "4.9",
+          "type": "eau-eau"
+        }
+      ]
+    }
+  }
+}

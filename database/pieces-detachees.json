@@ -1,0 +1,108 @@
+{
+  "pieces_chaudieres": {
+    "Viessmann": {
+      "Vitodens_200W": {
+        "circulateur": {
+          "reference": "7831387",
+          "prix_indicatif": "180-220€",
+          "duree_vie": "8-12 ans"
+        },
+        "vanne_3_voies": {
+          "reference": "7831386",
+          "prix_indicatif": "120-150€",
+          "duree_vie": "10-15 ans"
+        },
+        "sonde_temperature": {
+          "reference": "7450777",
+          "prix_indicatif": "25-35€",
+          "duree_vie": "5-8 ans"
+        },
+        "vanne_gaz": {
+          "reference": "7831385",
+          "prix_indicatif": "200-280€",
+          "duree_vie": "12-18 ans"
+        }
+      }
+    },
+    "Saunier_Duval": {
+      "ThemaPlus": {
+        "circulateur": {
+          "reference": "S1071600",
+          "prix_indicatif": "160-200€",
+          "duree_vie": "8-12 ans"
+        },
+        "vanne_3_voies": {
+          "reference": "S1071500",
+          "prix_indicatif": "110-140€",
+          "duree_vie": "10-15 ans"
+        },
+        "electrode_allumage": {
+          "reference": "S1071400",
+          "prix_indicatif": "15-25€",
+          "duree_vie": "3-5 ans"
+        }
+      }
+    }
+  },
+  "pieces_ballons": {
+    "Atlantic": {
+      "Chauffeo": {
+        "resistance_steatite": {
+          "reference": "099045",
+          "puissances": ["1500W", "2000W", "2400W"],
+          "prix_indicatif": "45-65€",
+          "duree_vie": "8-12 ans"
+        },
+        "thermostat": {
+          "reference": "070316",
+          "prix_indicatif": "25-35€",
+          "duree_vie": "10-15 ans"
+        },
+        "anode_magnesium": {
+          "reference": "099041",
+          "prix_indicatif": "15-25€",
+          "duree_vie": "2-4 ans"
+        },
+        "groupe_securite": {
+          "reference": "099042",
+          "prix_indicatif": "35-50€",
+          "duree_vie": "5-8 ans"
+        }
+      }
+    },
+    "Thermor": {
+      "Duralis": {
+        "resistance_steatite": {
+          "reference": "070067",
+          "puissances": ["1800W", "2400W"],
+          "prix_indicatif": "50-70€"
+        },
+        "thermostat_securite": {
+          "reference": "070068",
+          "prix_indicatif": "30-40€"
+        }
+      }
+    }
+  },
+  "pieces_pac": {
+    "Daikin": {
+      "Altherma": {
+        "compresseur": {
+          "reference": "300414P",
+          "prix_indicatif": "800-1200€",
+          "duree_vie": "12-18 ans"
+        },
+        "detendeur": {
+          "reference": "300415P",
+          "prix_indicatif": "80-120€",
+          "duree_vie": "10-15 ans"
+        },
+        "sonde_exterieure": {
+          "reference": "300416P",
+          "prix_indicatif": "35-50€",
+          "duree_vie": "8-12 ans"
+        }
+      }
+    }
+  }
+}

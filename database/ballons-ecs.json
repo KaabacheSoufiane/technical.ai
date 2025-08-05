@@ -1,0 +1,136 @@
+{
+  "ballons_electriques": {
+    "Atlantic": {
+      "gammes": ["Chauffeo", "Zeneo", "Lineo"],
+      "modeles": [
+        {
+          "nom": "Chauffeo Plus",
+          "capacites": ["100L", "150L", "200L", "250L", "300L"],
+          "type": "vertical",
+          "resistance": "steatite",
+          "garantie_cuve": "5 ans",
+          "pannes_courantes": ["Resistance HS", "Thermostat securite", "Anode usee"]
+        },
+        {
+          "nom": "Zeneo",
+          "capacites": ["150L", "200L", "250L"],
+          "type": "vertical/horizontal",
+          "resistance": "ceramique",
+          "garantie_cuve": "5 ans"
+        },
+        {
+          "nom": "Lineo",
+          "capacites": ["100L", "150L", "200L"],
+          "type": "vertical",
+          "resistance": "blindee",
+          "garantie_cuve": "3 ans"
+        }
+      ]
+    },
+    "Thermor": {
+      "gammes": ["Duralis", "Malicio", "Steatis"],
+      "modeles": [
+        {
+          "nom": "Duralis",
+          "capacites": ["100L", "150L", "200L", "250L", "300L"],
+          "type": "vertical",
+          "resistance": "steatite",
+          "garantie_cuve": "5 ans"
+        },
+        {
+          "nom": "Malicio",
+          "capacites": ["50L", "75L", "100L"],
+          "type": "compact",
+          "resistance": "ceramique"
+        }
+      ]
+    },
+    "Ariston": {
+      "gammes": ["Initio", "Nuos"],
+      "modeles": [
+        {
+          "nom": "Initio",
+          "capacites": ["100L", "150L", "200L"],
+          "type": "vertical",
+          "resistance": "blindee"
+        }
+      ]
+    },
+    "Sauter": {
+      "gammes": ["Prodigio", "Essentiel"],
+      "modeles": [
+        {
+          "nom": "Prodigio",
+          "capacites": ["100L", "150L", "200L", "300L"],
+          "type": "vertical",
+          "resistance": "steatite"
+        }
+      ]
+    }
+  },
+  "ballons_thermodynamiques": {
+    "Atlantic": {
+      "gammes": ["Calypso", "Odyssee"],
+      "modeles": [
+        {
+          "nom": "Calypso Split",
+          "capacites": ["200L", "250L", "300L"],
+          "cop": "3.3",
+          "type": "split",
+          "temperature_fonctionnement": "-5°C à +35°C"
+        },
+        {
+          "nom": "Odyssee Split",
+          "capacites": ["200L", "250L"],
+          "cop": "3.4",
+          "type": "split"
+        }
+      ]
+    },
+    "Thermor": {
+      "gammes": ["Aeromax"],
+      "modeles": [
+        {
+          "nom": "Aeromax Split",
+          "capacites": ["200L", "250L", "300L"],
+          "cop": "3.3",
+          "type": "split"
+        }
+      ]
+    },
+    "Daikin": {
+      "gammes": ["Altherma"],
+      "modeles": [
+        {
+          "nom": "Altherma EKHHP",
+          "capacites": ["200L", "300L", "500L"],
+          "cop": "3.8",
+          "type": "monobloc"
+        }
+      ]
+    }
+  },
+  "ballons_solaires": {
+    "Viessmann": {
+      "gammes": ["Vitosol"],
+      "modeles": [
+        {
+          "nom": "Vitosol 200-FM",
+          "capacites": ["300L", "500L", "750L"],
+          "type": "double_echangeur",
+          "surface_capteurs": "4-8 m²"
+        }
+      ]
+    },
+    "Bosch": {
+      "gammes": ["Solar"],
+      "modeles": [
+        {
+          "nom": "Solar 7000 TF",
+          "capacites": ["300L", "400L", "500L"],
+          "type": "simple_echangeur"
+        }
+      ]
+    }
+  }
+}

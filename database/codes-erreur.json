@@ -1,0 +1,69 @@
+{
+  "codes_erreur_chaudieres": {
+    "Viessmann": {
+      "F2": {
+        "description": "Défaut allumage brûleur",
+        "causes": ["Électrode d'allumage", "Vanne gaz", "Ventilateur"],
+        "solutions": ["Nettoyer électrode", "Vérifier alimentation gaz", "Contrôler ventilateur"]
+      },
+      "F4": {
+        "description": "Défaut flamme",
+        "causes": ["Électrode d'ionisation", "Pression gaz", "Encrassement brûleur"],
+        "solutions": ["Nettoyer électrode ionisation", "Régler pression gaz", "Nettoyer brûleur"]
+      },
+      "F5": {
+        "description": "Défaut ventilateur",
+        "causes": ["Ventilateur HS", "Pressostat air", "Conduit fumées"],
+        "solutions": ["Remplacer ventilateur", "Contrôler pressostat", "Vérifier évacuation"]
+      }
+    },
+    "Saunier Duval": {
+      "F1": {
+        "description": "Défaut allumage",
+        "causes": ["Électrode", "Gaz", "Ventilateur"],
+        "solutions": ["Nettoyer électrode", "Vérifier gaz", "Contrôler ventilateur"]
+      },
+      "F28": {
+        "description": "Défaut allumage répété",
+        "causes": ["Vanne gaz", "Électrode", "Carte électronique"],
+        "solutions": ["Remplacer vanne gaz", "Changer électrode", "Tester carte"]
+      },
+      "F29": {
+        "description": "Extinction flamme fonctionnement",
+        "causes": ["Ionisation", "Alimentation gaz", "Évacuation"],
+        "solutions": ["Nettoyer ionisation", "Contrôler gaz", "Vérifier conduit"]
+      }
+    },
+    "De Dietrich": {
+      "A01": {
+        "description": "Défaut allumage brûleur",
+        "causes": ["Électrode allumage", "Vanne gaz", "Ventilateur"],
+        "solutions": ["Contrôler électrode", "Tester vanne gaz", "Vérifier ventilateur"]
+      },
+      "A02": {
+        "description": "Défaut flamme",
+        "causes": ["Électrode ionisation", "Débit gaz", "Brûleur encrassé"],
+        "solutions": ["Nettoyer ionisation", "Régler débit", "Nettoyer brûleur"]
+      }
+    }
+  },
+  "codes_erreur_pac": {
+    "Daikin": {
+      "E1": {
+        "description": "Défaut carte électronique",
+        "causes": ["Carte PCB", "Connexions", "Alimentation"],
+        "solutions": ["Remplacer carte", "Vérifier connexions", "Contrôler tension"]
+      },
+      "E3": {
+        "description": "Défaut pressostat haute pression",
+        "causes": ["Pression haute", "Condenseur", "Ventilateur"],
+        "solutions": ["Contrôler pression", "Nettoyer condenseur", "Vérifier ventilateur"]
+      },
+      "H0": {
+        "description": "Défaut capteur température",
+        "causes": ["Sonde température", "Câblage", "Carte"],
+        "solutions": ["Remplacer sonde", "Vérifier câblage", "Tester carte"]
+      }
+    }
+  }
+}
